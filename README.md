@@ -27,44 +27,5 @@ WxServer.reply_message(message, FromUserName, ToUserName, MsgType)  // 回复消
 
 
 ## 实现思路
-
-微信公众号给的api是真的很答辩，一开始想通过被动回复来实现，但是被动回复只有5秒钟的时间，5秒不回复，公众号就会返回错误
-
-
-让gpt在五秒钟时间返回答案有点过于勉强了
-
-于是考虑使用微信自带的机器人
-
-![image](https://user-images.githubusercontent.com/77989499/233979944-acf82a6b-dc53-40b7-9b69-de522c150df9.png)
-
-但是这里也有个坑，和上面一样，如果长时间不返回答案的话，微信服务器就会尝试重发请求，导致不能正常实现逻辑
-
-![image](https://user-images.githubusercontent.com/77989499/233980254-9a36ea3d-a105-43e0-9200-007db0a2283d.png)
-
-于是改用了另外一种方式，全程调用机器人的客服api来对接
-
-![image](https://user-images.githubusercontent.com/77989499/233980607-0ec2d626-7798-4354-952c-0aa240eaf419.png)
-
-这里还是有个坑
-
-![image](https://user-images.githubusercontent.com/77989499/233980674-171cb9ae-aaf9-47d0-a777-b0b30aac9dc5.png)
-
-要认证才可以直接在微信里回复消息，认证需要300元人民币
-
-于是只好走h5跳转网页的形式
-
-先需要通过h5的相关回调接口获得用户的openid和相应消息
-
-![image](https://user-images.githubusercontent.com/77989499/233980989-ff8e472d-9f76-4e96-869a-299bdf00bee2.png)
-
-在用户输入“聊天”的时候，通过event消息事件获得openid和消息，拼接后被动回复，返回H5机器人的地址
-
-![image](https://user-images.githubusercontent.com/77989499/233978878-f424b192-5ab5-4d0e-9de1-a39bbde99709.png)
-
-获得openid和消息以后，后端处理请求，将问题发送到gpt api，得到结果返回，使用h5的渠道发送客服消息
-
-至此逻辑实现
-
-![image](https://user-images.githubusercontent.com/77989499/233981678-33309424-6931-4973-83c0-a61194e81bbf.png)
-
+[思路](https://www.pursuecode.cn/archives/wei-xin-gong-zhong-hao-jie-ru-chatgpt 我的博客)
 
