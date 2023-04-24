@@ -27,5 +27,5 @@ WxServer.reply_message(message, FromUserName, ToUserName, MsgType)  // 回复消
 
 
 ## 实现思路
-![思路](https://www.pursuecode.cn/archives/wei-xin-gong-zhong-hao-jie-ru-chatgpt 我的博客)
+![思路](https://www.pursuecode.cn/archives/wei-xin-gong-zhong-hao-jie-ru-chatgpt)
 
