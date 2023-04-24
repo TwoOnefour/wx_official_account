@@ -155,14 +155,27 @@ class WxServer{
                             content = result["xml"]["Content"]
                             MsgType = result["xml"]["MsgType"]
                             const now_time = sd.format(new Date(), 'YYYY-MM-DD HH:mm:ss');
+//                            console.log(result)
                             const str1 = format("{0}\t收到消息\ttype:{1}\tuser:{2}\tcontent:{3}", now_time, MsgType, FromUserName, content)
                             console.log(str1)
                             // 写一个发送消息接口和加密接口
+                            if (MsgType.toString() === "event")
+                                return
                             if (content.toString().match("订阅")){
                                 let my_message = "https://www.pursuecode.cn/subscribe"
                                 response = this.reply_message(my_message, ToUserName, FromUserName, "text")
                                 return
                             } // 写一些关键词回复
+                            else if (content.toString().match("聊天")){
+                                let my_message = format("https://chatbot.weixin.qq.com/webapp/auth/gtqFsFUVcQlZBAKWywZOVXH95jW0xg?openid={}&nickname=&avatar=&robotName=GPT", FromUserName)
+                                response = this.reply_message(my_message, ToUserName, FromUserName, "text")
+                                return
+                            }
+                            else{
+                                let my_message = format("你好，目前只有一种功能，输入“聊天”，可返回机器人聊天链接", FromUserName)
+                                response = this.reply_message(my_message, ToUserName, FromUserName, "text")
+
+                            }
                             // response = this.reply_message("你好", ToUserName, FromUserName, "text")
                         })
                     });
