@@ -21,14 +21,14 @@ WxServer.encrypt_message(response)  // 加密，传入明文，返回密文，�
 WxServer.reply_message(message, FromUserName, ToUserName, MsgType)  // 回复消息,直接返回密文
 ```
 
-![image](https://bucket.pursuecode.cn/upload/2023/04/9.png)
+![image](https://bucket.voidval.com/upload/2023/04/9.png)
 
-![image](https://bucket.pursuecode.cn/upload/2023/04/8.png)
+![image](https://bucket.voidval.com/upload/2023/04/8.png)
 
 如果想直接使用server.js，请添加appinfo等必填信息，用例位于253行
 
 ## 效果
-![image](https://bucket.pursuecode.cn/upload/2023/04/7.png)
+![image](https://bucket.voidval.com/upload/2023/04/7.png)
 ## 实现思路
-请跳转至我的[博客](https://www.pursuecode.cn/archives/wei-xin-gong-zhong-hao-jie-ru-chatgpt)
+请跳转至我的[博客](https://www.voidval.com/archives/wei-xin-gong-zhong-hao-jie-ru-chatgpt)
 
